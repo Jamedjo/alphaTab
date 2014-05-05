@@ -65,7 +65,7 @@ namespace AlphaTab.Wpf.Share.ViewModel
             set
             {
                 _score = value;
-                OnPropertyChanged();
+                OnPropertyChanged("Score");
                 OnPropertyChangedExplicit("ScoreTitle");
                 _showScoreInfoCommand.RaiseCanExecuteChanged();
 
@@ -99,7 +99,7 @@ namespace AlphaTab.Wpf.Share.ViewModel
                 UpdateSelectedViewModel();
 
                 // notify the ui
-                OnPropertyChanged();
+                OnPropertyChanged("CurrentTrackIndex");
                 OnPropertyChangedExplicit("CurrentTrack");
             }
         }
@@ -128,7 +128,7 @@ namespace AlphaTab.Wpf.Share.ViewModel
 
                 // ensure correct selection
                 UpdateSelectedViewModel();
-                OnPropertyChanged();
+                OnPropertyChanged("TrackInfos");
             }
         }
 
@@ -146,7 +146,7 @@ namespace AlphaTab.Wpf.Share.ViewModel
                 {
                     CurrentTrackIndex = _score.Tracks.FindIndex(t => t == _selectedTrackInfo.Track);
                 }
-                OnPropertyChanged();
+                OnPropertyChanged("SelectedTrackInfo");
             }
         }
 
@@ -245,7 +245,7 @@ namespace AlphaTab.Wpf.Share.ViewModel
             if (handler != null) handler(this, new PropertyChangedEventArgs(propertyName));
         }
 
-        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        protected virtual void OnPropertyChanged(string propertyName)
         {
             OnPropertyChangedExplicit(propertyName);
         }

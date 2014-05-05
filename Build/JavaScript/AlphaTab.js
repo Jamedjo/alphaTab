@@ -8302,8 +8302,13 @@
 			else if (beat.index === 0) {
 				// first beat of bar
 				var previousVoice = this.bar.previousBar.voices[this.index];
-				beat.previousBeat = previousVoice.beats[previousVoice.beats.length - 1];
-				beat.previousBeat.nextBeat = beat;
+				if (previousVoice.beats.length > 0) {
+					beat.previousBeat = previousVoice.beats[previousVoice.beats.length - 1];
+					beat.previousBeat.nextBeat = beat;
+				}
+				else {
+					beat.previousBeat = null;
+				}
 			}
 			else {
 				// other beats of bar

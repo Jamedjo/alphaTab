@@ -37,7 +37,7 @@ namespace AlphaTab.Wpf.Share.ViewModel
             set
             {
                 _isSelected = value;
-                OnPropertyChanged();
+                OnPropertyChanged("IsSelected");
             }
         }
 
@@ -47,7 +47,7 @@ namespace AlphaTab.Wpf.Share.ViewModel
             set
             {
                 _trackType = value;
-                OnPropertyChanged();
+                OnPropertyChanged("TrackType");
             }
         }
 
@@ -57,7 +57,7 @@ namespace AlphaTab.Wpf.Share.ViewModel
             set
             {
                 _track.Name = value;
-                OnPropertyChanged();
+                OnPropertyChanged("Name");
             }
         }
 
@@ -67,7 +67,7 @@ namespace AlphaTab.Wpf.Share.ViewModel
             set
             {
                 _track.PlaybackInfo.Volume = value;
-                OnPropertyChanged();
+                OnPropertyChanged("Volume");
             }
         }
 
@@ -77,7 +77,7 @@ namespace AlphaTab.Wpf.Share.ViewModel
             set
             {
                 _track.PlaybackInfo.IsSolo = value;
-                OnPropertyChanged();
+                OnPropertyChanged("IsSolo");
             }
         }
 
@@ -87,7 +87,7 @@ namespace AlphaTab.Wpf.Share.ViewModel
             set
             {
                 _track.PlaybackInfo.IsMute = value;
-                OnPropertyChanged();
+                OnPropertyChanged("IsMute");
             }
         }
 
@@ -97,7 +97,7 @@ namespace AlphaTab.Wpf.Share.ViewModel
             set
             {
                 _usedBars = value;
-                OnPropertyChanged();
+                OnPropertyChanged("UsedBars");
             }
         }
 
@@ -107,7 +107,7 @@ namespace AlphaTab.Wpf.Share.ViewModel
             set
             {
                 _track = value;
-                OnPropertyChanged();
+                OnPropertyChanged("Track");
             }
         }
 
@@ -161,7 +161,7 @@ namespace AlphaTab.Wpf.Share.ViewModel
 
 
         public event PropertyChangedEventHandler PropertyChanged;
-        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        protected virtual void OnPropertyChanged(string propertyName)
         {
             OnPropertyChangedExplicit(propertyName);
         }
