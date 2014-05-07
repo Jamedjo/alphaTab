@@ -8302,8 +8302,13 @@
 			else if (beat.index === 0) {
 				// first beat of bar
 				var previousVoice = this.bar.previousBar.voices[this.index];
-				beat.previousBeat = previousVoice.beats[previousVoice.beats.length - 1];
-				beat.previousBeat.nextBeat = beat;
+				if (previousVoice.beats.length > 0) {
+					beat.previousBeat = previousVoice.beats[previousVoice.beats.length - 1];
+					beat.previousBeat.nextBeat = beat;
+				}
+				else {
+					beat.previousBeat = null;
+				}
 			}
 			else {
 				// other beats of bar
@@ -11287,7 +11292,7 @@
 					w += g.width;
 				}
 			}
-			this.width = w;
+			this.width = ss.Int32.trunc(w * this.renderer.get_settings().layout.get('spacingScale', 1));
 		},
 		noteLoop: function(action) {
 			for (var i = this.get_container().beat.notes.length - 1; i >= 0; i--) {
